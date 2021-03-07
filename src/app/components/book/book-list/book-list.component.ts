@@ -22,7 +22,7 @@ export class BookListComponent implements OnInit {
     this.books = this.bookService.getBooks();
   }
 
-  setBookSelected(book: IBook): void {
+  selectBook(book: IBook): void {
     this.bookSelected = book;
     this.addToCart(this.bookSelected);
   }

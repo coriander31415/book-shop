@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ICart } from '../../../models/cart.model';
 import { CartService } from '../../../services/cart.service';
 
@@ -6,6 +6,7 @@ import { CartService } from '../../../services/cart.service';
   selector: 'app-cart-list',
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class CartListComponent implements OnInit {
   booksInCart: ICart[] = [];
@@ -14,6 +15,5 @@ export class CartListComponent implements OnInit {
 
   ngOnInit(): void {
     this.booksInCart = this.cartService.getItems();
-    // console.log('cartService (ngOnInit) : ', this.booksInCart);
   }
 }

@@ -1,5 +1,5 @@
 <h1>Books</h1>
 <div *ngFor="let book of books">
-  <app-book-item [book]="book" (bookSelected)="setBookSelected(book)"></app-book-item>
-  <!-- <button [disabled]="!book.isAvailable" (click)="addToCart(book)">Add to cart</button> -->
+  <app-book-item [book]="book" (bookSelected)="selectBook(book)"></app-book-item>
+  <button [disabled]="!book.isAvailable" (click)="addToCart(book)">Add to cart</button>
 </div>

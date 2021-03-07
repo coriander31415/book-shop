@@ -1,3 +1,8 @@
-<div> {{ booksInCart.book.name }} </div>
-<div> {{ booksInCart.book.price }} </div>
-<hr>
+<div>{{ booksInCart.book.name }}</div>
+<div>
+  <button (click)="decreaseQty(booksInCart.book)">-</button>
+  <input type="text" value="{{ booksInCart.qty }}" />
+  <button (click)="increaseQty(booksInCart.book)">+</button>
+</div>
+<button (click)="deleteItem(booksInCart.book)">Delete item</button>
+<hr />

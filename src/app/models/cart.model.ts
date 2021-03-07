@@ -2,7 +2,7 @@ import { IBook } from './book.model';
 
 export interface ICart {
   book: IBook;
-  quantity: number;
+  qty: number;
   name?: string;
   price?: number;
   sum?: number;
