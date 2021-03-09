@@ -2,3 +2,6 @@
 <div *ngFor="let book of booksInCart">
  <app-cart-item [booksInCart]="book"></app-cart-item>
 </div>
+<div>Total quantity: {{ booksInCart.qty }} pcs.</div>
+<div>Total sum: $ {{ booksInCart.sum }} </div>
+<button (click)="deleteAllItems()">Clear All</button>

@@ -13,6 +13,10 @@
     "classlist",
     "stylelint"
   ],
+  "cSpell.ignorePaths": [
+    "node_modules/**",
+    "dist/**",
+  ],
   "cSpell.words": [
     "codelyzer",
     "devkit"

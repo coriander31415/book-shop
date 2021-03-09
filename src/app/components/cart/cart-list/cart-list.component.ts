@@ -11,9 +11,18 @@ import { CartService } from '../../../services/cart.service';
 export class CartListComponent implements OnInit {
   booksInCart: ICart[] = [];
 
+  totalQty = 0;
+
+  totalSum = 0;
+
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.booksInCart = this.cartService.getItems();
+    this.totalQty = this.cartService.getTotalQty(this.booksInCart);
+  }
+
+  deleteAllItems(): void {
+    this.booksInCart = this.cartService.clearCart();
   }
 }
