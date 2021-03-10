@@ -3,13 +3,12 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng lint && ng serve -o",
+        "start": "ng lint --fix && ng serve -o",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
         "pretty-quick": "pretty-quick --staged",
-        "postinstall": "husky install",
         "stylelint": "npx stylelint src/**/*.scss",
         "prettier": "prettier --write src/**/* --ignore-unknown"
     },
@@ -22,10 +21,6 @@
     "private": true,
     "dependencies": {
         "@angular-devkit/architect": "^0.1102.1",
-        "@angular-eslint/builder": "^1.2.0",
-        "@angular-eslint/eslint-plugin": "^1.2.0",
-        "@angular-eslint/eslint-plugin-template": "^1.2.0",
-        "@angular-eslint/template-parser": "^1.2.0",
         "@angular/animations": "~11.0.6",
         "@angular/common": "~11.0.6",
         "@angular/compiler": "~11.0.6",
