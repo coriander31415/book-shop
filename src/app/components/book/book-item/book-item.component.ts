@@ -9,9 +9,9 @@ import { IBook } from '../../../models/book.model';
 export class BookItemComponent {
   @Input() book!: IBook;
 
-  @Output() bookSelected: EventEmitter<IBook> = new EventEmitter<IBook>();
+  @Output() selectBook: EventEmitter<IBook> = new EventEmitter<IBook>();
 
-  selectBook(book: IBook): void {
-    this.bookSelected.emit(book);
+  addBookToCart(book: IBook): void {
+    this.selectBook.emit(book);
   }
 }

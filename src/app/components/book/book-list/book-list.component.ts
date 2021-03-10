@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { IBook } from '../../../models/book.model';
 import { BookService } from '../../../services/book.service';
 import { CartService } from '../../../services/cart.service';
@@ -10,11 +10,7 @@ import { CartService } from '../../../services/cart.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookListComponent implements OnInit {
-  @Input() book!: IBook;
-
   books: IBook[] = [];
-
-  @Input() bookSelected!: IBook;
 
   constructor(private cartService: CartService, private bookService: BookService) {}
 
@@ -23,11 +19,14 @@ export class BookListComponent implements OnInit {
   }
 
   selectBook(book: IBook): void {
-    this.bookSelected = book;
-    this.addToCart(this.bookSelected);
+    this.addToCart(book);
   }
 
   addToCart(bookSelected: IBook): void {
     this.cartService.addToCart(bookSelected);
+  }
+
+  trackByBookId(index: number, book: IBook) {
+    return book ? book.id : undefined;
   }
 }

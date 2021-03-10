@@ -1,4 +1,4 @@
 <h1>Your cart</h1>
-<div *ngFor="let book of booksInCart">
+<div *ngFor="let book of booksInCart; trackBy: trackByBookId">
  <app-cart-item [booksInCart]="book"></app-cart-item>
 </div>

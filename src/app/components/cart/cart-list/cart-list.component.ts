@@ -16,4 +16,8 @@ export class CartListComponent implements OnInit {
   ngOnInit(): void {
     this.booksInCart = this.cartService.getItems();
   }
+
+  trackByBookId(index: number, bookInCart: ICart) {
+    return bookInCart ? bookInCart.book.id : undefined;
+  }
 }
