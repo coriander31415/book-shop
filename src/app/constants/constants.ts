@@ -10,7 +10,7 @@ export const booksCatalogue: IBook[] = [
     author: 'Jamie Kern Lima',
     createDate: 2021,
     isAvailable: true,
-    img: './assets/book_covers/book_believe_it.jpg',
+    img: '/assets/book_covers/book_believe_it.jpg',
   },
   {
     id: 2,
