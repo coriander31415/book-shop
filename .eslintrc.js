@@ -12,6 +12,8 @@ module.exports = {
         "airbnb-typescript/base",
         "prettier/@typescript-eslint",
         "plugin:prettier/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
       ],
       rules: {
         "import/no-unresolved": "off",
@@ -19,6 +21,12 @@ module.exports = {
         "import/prefer-default-export": "off",
         "class-methods-use-this": "off",
         "lines-between-class-members": "off",
+        "no-param-reassign": [
+          "error", 
+          { 
+            "props": false 
+          }
+        ],
         "@typescript-eslint/unbound-method": [
           "error",
           {

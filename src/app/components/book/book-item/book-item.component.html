@@ -5,6 +5,6 @@
     <li>Author: {{ book.author }} </li>
     <li>Description: {{ book.description }}</li>
     <li>Category: {{ book.category }}</li>
-    <li>Price: ${{ book.price }}</li>
+    <li>Price: {{ book.price | currency:'USD' }}</li>
   </ul>  
 </div>
