@@ -46,10 +46,10 @@ export class CartService {
     const itemInd: number = this.cart.cartItems.findIndex((cartItem) => cartItem.id === id);
     if (this.cart.cartItems[itemInd].qty > 0) {
       this.cart.cartItems[itemInd] = { ...this.cart.cartItems[itemInd], qty: this.cart.cartItems[itemInd].qty - 1 };
+      this.getItemCost(this.cart.cartItems[itemInd]);
     } else {
       this.deleteItemFromCart(id);
     }
-    this.getItemCost(this.cart.cartItems[itemInd]);
     this.updateCartData();
   }
 
