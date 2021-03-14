@@ -10,6 +10,7 @@ import { CartItemComponent } from './components/cart/cart-item/cart-item.compone
 import { AboutComponent } from './components/about/about.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { ConstantsService, APP_CONSTANTS } from './services/constants.service';
+import { APP_RANDOM_STRING_5, GeneratorService, GeneratorFactory } from './services/generator.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,11 @@ import { ConstantsService, APP_CONSTANTS } from './services/constants.service';
     {
       provide: APP_CONSTANTS,
       useValue: ConstantsService,
+    },
+    {
+      provide: APP_RANDOM_STRING_5,
+      useFactory: GeneratorFactory(5),
+      deps: [GeneratorService],
     },
   ],
   bootstrap: [AppComponent],
