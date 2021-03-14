@@ -9,6 +9,7 @@ import { CartListComponent } from './components/cart/cart-list/cart-list.compone
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import { AboutComponent } from './components/about/about.component';
 import { LocalStorageService } from './services/local-storage.service';
+import { ConstantsService, APP_CONSTANTS } from './services/constants.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,10 @@ import { LocalStorageService } from './services/local-storage.service';
     {
       provide: LocalStorageService,
       useClass: LocalStorageService,
+    },
+    {
+      provide: APP_CONSTANTS,
+      useValue: ConstantsService,
     },
   ],
   bootstrap: [AppComponent],

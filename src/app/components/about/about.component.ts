@@ -1,6 +1,7 @@
-import { Component, Optional, OnInit } from '@angular/core';
+import { Component, Optional, OnInit, Inject } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ConfigOptionsService } from '../../services/config-options.service';
+import { APP_CONSTANTS, IAppConstants } from '../../services/constants.service';
 
 @Component({
   selector: 'app-about',
@@ -11,6 +12,7 @@ export class AboutComponent implements OnInit {
   constructor(
     @Optional() private localStorage: LocalStorageService,
     @Optional() private configOption: ConfigOptionsService,
+    @Optional() @Inject(APP_CONSTANTS) private appConstants: IAppConstants,
   ) {}
 
   ngOnInit(): void {
@@ -22,5 +24,15 @@ export class AboutComponent implements OnInit {
 
     setTimeout(() => this.localStorage.removeLSItem('localStorageKey'), 5000);
     setTimeout(() => this.localStorage.removeLSItem('configOptionKey'), 6000);
+
+    this.testConstantsInjection();
+  }
+
+  private testConstantsInjection() {
+    if (this.appConstants.App === 'BookShop' && this.appConstants.Ver === '1.0') {
+      console.log('Constants injection works!');
+    } else {
+      console.log('Constants injection does NOT works!');
+    }
   }
 }
