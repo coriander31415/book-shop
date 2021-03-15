@@ -16,7 +16,11 @@ export class LocalStorageService {
 
   getLSItem<T>(key: string): T {
     const storageValue = localStorage.getItem(key) || '{}';
-    return JSON.parse(storageValue);
+    try {
+      return JSON.parse(storageValue);
+    } catch (err) {
+      throw new SyntaxError(err);
+    }
   }
 
   removeLSItem(key: string): void {
