@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ICart } from '../../../models/cart.model';
+import { ICart, ICartItem } from '../../../models/cart.model';
 import { CartService } from '../../../services/cart.service';
 
 @Component({
@@ -9,15 +9,39 @@ import { CartService } from '../../../services/cart.service';
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class CartListComponent implements OnInit {
-  booksInCart: ICart[] = [];
+  cart: ICart = {
+    cartItems: [],
+    totalQty: 0,
+    totalCost: 0,
+  };
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.booksInCart = this.cartService.getItems();
+    this.getItems();
   }
 
-  trackByBookId(index: number, bookInCart: ICart) {
-    return bookInCart ? bookInCart.book.id : undefined;
+  getItems(): void {
+    this.cart = this.cartService.getItems();
+  }
+
+  trackByCartItemId(_index: number, cartItem: ICartItem): number {
+    return cartItem.id;
+  }
+
+  onIncreaseQty(id: number): void {
+    this.cartService.increaseQty(id);
+  }
+
+  onDecreaseQty(id: number): void {
+    this.cartService.decreaseQty(id);
+  }
+
+  onDeleteItem(id: number): void {
+    this.cartService.deleteItemFromCart(id);
+  }
+
+  onDeleteAllItems(): void {
+    this.cartService.deleteAllItemsFromCart();
   }
 }

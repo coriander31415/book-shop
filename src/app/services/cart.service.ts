@@ -1,37 +1,68 @@
 import { Injectable } from '@angular/core';
 import { IBook } from '../models/book.model';
-import { ICart } from '../models/cart.model';
+import { ICart, ICartItem } from '../models/cart.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  booksInCart: ICart[] = [];
+  private cart: ICart = {
+    cartItems: [],
+    totalQty: 0,
+    totalCost: 0,
+  };
 
-  getItems(): ICart[] {
-    return this.booksInCart;
+  getItems(): ICart {
+    return this.cart;
   }
 
-  addToCart(book: IBook): void {
-    const ind: number = this.booksInCart.findIndex((el) => el.book.id === book.id);
-    if (ind === -1) {
-      this.booksInCart.push({ book, qty: 1 });
+  addBookToCart(book: IBook): void {
+    const { id, name, price } = book;
+    const itemInd = this.cart.cartItems.findIndex(({ id: cartId }) => id === cartId);
+    if (itemInd !== -1) {
+      this.increaseQty(id);
     } else {
-      this.booksInCart[ind].qty += 1;
+      const cartItem: ICartItem = { id, name, price, qty: 1, cost: price };
+      this.cart.cartItems = [...this.cart.cartItems, cartItem];
     }
+    this.updateCartData();
   }
 
-  removeFromCart(book: IBook): void {
-    const ind: number = this.booksInCart.findIndex((el) => el.book.id === book.id);
-    if (this.booksInCart[ind].qty > 1) {
-      this.booksInCart[ind].qty -= 1;
+  increaseQty(id: number): void {
+    const itemInd = this.cart.cartItems.findIndex(({ id: cartId }) => id === cartId);
+    this.cart.cartItems[itemInd] = { ...this.cart.cartItems[itemInd], qty: this.cart.cartItems[itemInd].qty + 1 };
+    this.getItemCost(this.cart.cartItems[itemInd]);
+    this.updateCartData();
+  }
+
+  decreaseQty(id: number): void {
+    const itemInd = this.cart.cartItems.findIndex(({ id: cartId }) => id === cartId);
+    if (this.cart.cartItems[itemInd].qty > 0) {
+      this.cart.cartItems[itemInd] = { ...this.cart.cartItems[itemInd], qty: this.cart.cartItems[itemInd].qty - 1 };
+      this.getItemCost(this.cart.cartItems[itemInd]);
     } else {
-      this.deleteItemFromCart(book);
+      this.deleteItemFromCart(id);
     }
+    this.updateCartData();
   }
 
-  deleteItemFromCart(book: IBook): void {
-    const ind: number = this.booksInCart.findIndex((el) => el.book.id === book.id);
-    this.booksInCart.splice(ind, 1);
+  deleteItemFromCart(id: number): void {
+    const itemInd = this.cart.cartItems.findIndex(({ id: cartId }) => id === cartId);
+    this.cart.cartItems.splice(itemInd, 1);
+    this.updateCartData();
+  }
+
+  deleteAllItemsFromCart(): void {
+    this.cart.cartItems = [];
+    this.updateCartData();
+  }
+
+  private getItemCost(cartItem: ICartItem): void {
+    cartItem.cost = cartItem.price * cartItem.qty;
+  }
+
+  private updateCartData(): void {
+    this.cart.totalQty = this.cart.cartItems.reduce((acc, curr) => acc + curr.qty, 0);
+    this.cart.totalCost = this.cart.cartItems.reduce((acc, curr) => acc + curr.cost, 0);
   }
 }

@@ -1,27 +1,30 @@
-import { Component, Input } from '@angular/core';
-import { IBook } from '../../../models/book.model';
-import { ICart } from '../../../models/cart.model';
-import { CartService } from '../../../services/cart.service';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ICartItem } from '../../../models/cart.model';
 
 @Component({
   selector: 'app-cart-item',
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartItemComponent {
-  @Input() booksInCart!: ICart;
+  @Input() cartItem!: ICartItem;
 
-  constructor(private cartService: CartService) {}
+  @Output() increaseQty = new EventEmitter<number>();
 
-  increaseQty(book: IBook): void {
-    this.cartService.addToCart(book);
+  @Output() decreaseQty = new EventEmitter<number>();
+
+  @Output() deleteItem = new EventEmitter<number>();
+
+  onIncreaseQty(id: number): void {
+    this.increaseQty.emit(id);
   }
 
-  decreaseQty(book: IBook): void {
-    this.cartService.removeFromCart(book);
+  onDecreaseQty(id: number): void {
+    this.decreaseQty.emit(id);
   }
 
-  deleteItem(book: IBook): void {
-    this.cartService.deleteItemFromCart(book);
+  onDeleteItem(id: number): void {
+    this.deleteItem.emit(id);
   }
 }

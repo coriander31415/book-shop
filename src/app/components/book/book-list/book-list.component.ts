@@ -23,10 +23,10 @@ export class BookListComponent implements OnInit {
   }
 
   addToCart(bookSelected: IBook): void {
-    this.cartService.addToCart(bookSelected);
+    this.cartService.addBookToCart(bookSelected);
   }
 
-  trackByBookId(index: number, book: IBook) {
-    return book ? book.id : undefined;
+  trackByBookId(_index: number, book: IBook): number {
+    return book.id;
   }
 }

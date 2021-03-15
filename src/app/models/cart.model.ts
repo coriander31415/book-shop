@@ -1,7 +1,12 @@
-import { IBook } from './book.model';
-
 export interface ICart {
-  book: IBook;
+  cartItems: ICartItem[];
+  totalQty: number;
+  totalCost: number;
+}
+export interface ICartItem {
+  id: number;
+  name: string;
+  price: number;
   qty: number;
-  sum?: number;
+  cost: number;
 }

@@ -1,0 +1,14 @@
+.book-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-bottom: 15px;
+}
+
+.book-cover {
+  width: 100px;
+}
+
+ul {
+  list-style: none;
+}

@@ -1,0 +1,13 @@
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.cart-item-qty {
+  margin: 0;
+}
+
+input {
+  width: 35px;
+}
