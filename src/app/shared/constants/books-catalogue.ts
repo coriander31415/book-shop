@@ -1,4 +1,4 @@
-import { IBook, EBookCategory } from '../models/book.model';
+import { EBookCategory, IBook } from '../../books/models/book.model';
 
 export const booksCatalogue: IBook[] = [
   {

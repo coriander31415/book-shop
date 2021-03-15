@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { ConfigOptionsService } from '../../services/config-options.service';
-import { APP_CONSTANTS, IAppConstants } from '../../services/constants.service';
-import { APP_RANDOM_STRING_5 } from '../../services/generator.service';
+import { ConfigOptionsService } from '../../../shared/services/config-options.service';
+import { APP_CONSTANTS, IAppConstants } from '../../../shared/services/constants.service';
+import { APP_RANDOM_STRING_5 } from '../../../shared/services/generator.service';
+import { LocalStorageService } from '../../../shared/services/local-storage.service';
 
 @Component({
   selector: 'app-about',

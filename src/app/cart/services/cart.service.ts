@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IBook } from '../models/book.model';
+import { IBook } from '../../books/models/book.model';
 import { ICart, ICartItem } from '../models/cart.model';
 
 @Injectable({

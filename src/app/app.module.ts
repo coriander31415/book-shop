@@ -1,16 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BookListComponent } from './components/book/book-list/book-list.component';
-import { BookItemComponent } from './components/book/book-item/book-item.component';
-import { CartListComponent } from './components/cart/cart-list/cart-list.component';
-import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
-import { AboutComponent } from './components/about/about.component';
-import { LocalStorageService } from './services/local-storage.service';
-import { ConstantsService, APP_CONSTANTS } from './services/constants.service';
-import { APP_RANDOM_STRING_5, GeneratorService, GeneratorFactory } from './services/generator.service';
+import { BookItemComponent } from './books/components/book-item/book-item.component';
+import { BookListComponent } from './books/components/book-list/book-list.component';
+import { CartItemComponent } from './cart/components/cart-item/cart-item.component';
+import { CartListComponent } from './cart/components/cart-list/cart-list.component';
+import { AboutComponent } from './layout/components/about/about.component';
+import { APP_CONSTANTS, ConstantsService } from './shared/services/constants.service';
+import { APP_RANDOM_STRING_5, GeneratorFactory, GeneratorService } from './shared/services/generator.service';
+import { LocalStorageService } from './shared/services/local-storage.service';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { APP_RANDOM_STRING_5, GeneratorService, GeneratorFactory } from './servi
     CartItemComponent,
     AboutComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [
     {
       provide: LocalStorageService,
