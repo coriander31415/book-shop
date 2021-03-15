@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ICart, ICartItem } from '../../../models/cart.model';
 import { CartService } from '../../../services/cart.service';
 
@@ -14,12 +14,6 @@ export class CartListComponent implements OnInit {
     totalQty: 0,
     totalCost: 0,
   };
-
-  @Output() increaseQty = new EventEmitter<number>();
-
-  @Output() decreaseQty = new EventEmitter<number>();
-
-  @Output() deleteItem = new EventEmitter<number>();
 
   constructor(private cartService: CartService) {}
 

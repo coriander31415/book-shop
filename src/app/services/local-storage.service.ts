@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 
+export interface ILocalStorage {
+  key: string;
+  value: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class LocalStorageService {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setLSItem(key: string, value: string | { [key: string]: any }): void {
+  setLSItem(key: string, value: string | { [key: string]: Record<string, ILocalStorage> }): void {
     const storageValue = JSON.stringify(value);
     localStorage.setItem(key, storageValue);
   }

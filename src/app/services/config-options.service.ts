@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
-import { LocalStorageService } from './local-storage.service';
 import { IConfigOptions } from '../models/config-options.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConfigOptionsService {
-  constructor(private localStorage: LocalStorageService) {}
+  private option!: IConfigOptions;
 
-  setConfigOption(configOption: IConfigOptions): void {
-    this.localStorage.setLSItem('configOptionKey', configOption);
+  setConfigOption(configOption: Partial<IConfigOptions>): void {
+    this.option = { ...this.option, ...configOption };
   }
 
-  getConfigOption(key: string): void {
-    this.localStorage.getLSItem(key);
+  getConfigOption(): Partial<IConfigOptions> {
+    return this.option;
   }
 }

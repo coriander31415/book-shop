@@ -6,7 +6,7 @@ import { ICart, ICartItem } from '../models/cart.model';
   providedIn: 'root',
 })
 export class CartService {
-  cart: ICart = {
+  private cart: ICart = {
     cartItems: [],
     totalQty: 0,
     totalCost: 0,
@@ -16,16 +16,9 @@ export class CartService {
     return this.cart;
   }
 
-  getItemIndx(id: number): number {
-    const itemIndx = this.cart.cartItems.findIndex((cartItem) => {
-      return cartItem.id === id;
-    });
-    return itemIndx;
-  }
-
   addBookToCart(book: IBook): void {
     const { id, name, price } = book;
-    const itemInd: number = this.cart.cartItems.findIndex((cartItem) => cartItem.id === book.id);
+    const itemInd = this.cart.cartItems.findIndex(({ id: cartId }) => id === cartId);
     if (itemInd !== -1) {
       this.increaseQty(id);
     } else {
@@ -36,14 +29,14 @@ export class CartService {
   }
 
   increaseQty(id: number): void {
-    const itemInd: number = this.cart.cartItems.findIndex((cartItem) => cartItem.id === id);
+    const itemInd = this.cart.cartItems.findIndex(({ id: cartId }) => id === cartId);
     this.cart.cartItems[itemInd] = { ...this.cart.cartItems[itemInd], qty: this.cart.cartItems[itemInd].qty + 1 };
     this.getItemCost(this.cart.cartItems[itemInd]);
     this.updateCartData();
   }
 
   decreaseQty(id: number): void {
-    const itemInd: number = this.cart.cartItems.findIndex((cartItem) => cartItem.id === id);
+    const itemInd = this.cart.cartItems.findIndex(({ id: cartId }) => id === cartId);
     if (this.cart.cartItems[itemInd].qty > 0) {
       this.cart.cartItems[itemInd] = { ...this.cart.cartItems[itemInd], qty: this.cart.cartItems[itemInd].qty - 1 };
       this.getItemCost(this.cart.cartItems[itemInd]);
@@ -54,7 +47,7 @@ export class CartService {
   }
 
   deleteItemFromCart(id: number): void {
-    const itemInd: number = this.cart.cartItems.findIndex((cartItem) => cartItem.id === id);
+    const itemInd = this.cart.cartItems.findIndex(({ id: cartId }) => id === cartId);
     this.cart.cartItems.splice(itemInd, 1);
     this.updateCartData();
   }
@@ -64,11 +57,11 @@ export class CartService {
     this.updateCartData();
   }
 
-  getItemCost(cartItem: ICartItem): void {
+  private getItemCost(cartItem: ICartItem): void {
     cartItem.cost = cartItem.price * cartItem.qty;
   }
 
-  updateCartData(): void {
+  private updateCartData(): void {
     this.cart.totalQty = this.cart.cartItems.reduce((acc, curr) => acc + curr.qty, 0);
     this.cart.totalCost = this.cart.cartItems.reduce((acc, curr) => acc + curr.cost, 0);
   }
