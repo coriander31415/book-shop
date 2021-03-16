@@ -1,4 +1,6 @@
-<div *ngFor="let book of books; trackBy: trackByBookId">
-  <app-book-item [book]="book" (bookSelected)="selectBook(book)"></app-book-item>
-  <button [disabled]="!book.isAvailable" (click)="addToCart(book)">Add to cart</button>
+<div class="books-wrapper">
+  <div *ngFor="let book of books; trackBy: trackByBookId" class="book-list">
+    <app-book-item [book]="book" (bookSelected)="selectBook(book)" class="book-item"></app-book-item>
+    <button [disabled]="!book.isAvailable" (click)="addToCart(book)" class="btn-cart">Add to cart</button>
+  </div>
 </div>

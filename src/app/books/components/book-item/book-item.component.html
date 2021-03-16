@@ -1,10 +1,10 @@
-<h2>{{ book.name }}</h2>
-<div class="book-item">
+<div class="book-item" [ngClass]="{'out-of-stock': !this.book.isAvailable}">
   <img class="book-cover" src="{{ book.img }}" alt="{{ book.name }}" />
-  <ul class="books-info">
+  <ul class="book-info">
+    <h2>{{ book.name }}</h2>
+    <li [ngStyle]="bookInfoStyles"> {{ book.description }} </li>
     <li>Author: {{ book.author }} </li>
-    <li>Description: {{ book.description }}</li>
     <li>Category: {{ book.category }}</li>
     <li>Price: {{ book.price | currency:'USD' }}</li>
-  </ul>  
+  </ul>
 </div>

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { CartService } from '../../../cart/services/cart.service';
 import { IBook } from '../../models/book.model';
 import { BookService } from '../../services/book.service';
-import { CartService } from '../../../cart/services/cart.service';
 
 @Component({
   selector: 'app-book-list',

@@ -1,14 +1,21 @@
-<h1>Your cart</h1>
-<h5>Total qty of Cart: {{ cart.totalQty }} pcs.</h5>
-<h5>Total cost of Cart: {{ cart.totalCost | currency:'EUR' }}</h5>
-<hr>
- <app-cart-item 
-  *ngFor="let cartItem of cart.cartItems; trackBy: trackByCartItemId"
-  [cartItem] = cartItem
-  (increaseQty)="onIncreaseQty($event)"
-  (decreaseQty)="onDecreaseQty($event)"
-  (deleteItem)="onDeleteItem($event)"
-  >
-  </app-cart-item>
-<hr>
-<button (click)="onDeleteAllItems()">Clear Cart</button>
+<ng-container *ngIf="cart.cartItems.length; then cartTemplate; else cartIsEmpty"></ng-container>
+  <ng-template #cartTemplate>
+    <h1>Your cart</h1>
+    <h5>Total qty of Cart: {{ cart.totalQty }} pcs.</h5>
+    <h5>Total cost of Cart: {{ cart.totalCost | currency:'EUR' }}</h5>
+    <hr>
+     <app-cart-item 
+      *ngFor="let cartItem of cart.cartItems; trackBy: trackByCartItemId"
+      [cartItem] = cartItem
+      (increaseQty)="onIncreaseQty($event)"
+      (decreaseQty)="onDecreaseQty($event)"
+      (deleteItem)="onDeleteItem($event)"
+      >
+      </app-cart-item>
+    <hr>
+    <button (click)="onDeleteAllItems()">Clear Cart</button>
+  </ng-template>
+
+<ng-template #cartIsEmpty>
+  <p>Your cart is empty...</p>
+</ng-template>
