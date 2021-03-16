@@ -2,26 +2,18 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BookItemComponent } from './books/components/book-item/book-item.component';
-import { BookListComponent } from './books/components/book-list/book-list.component';
-import { CartItemComponent } from './cart/components/cart-item/cart-item.component';
-import { CartListComponent } from './cart/components/cart-list/cart-list.component';
-import { AboutComponent } from './layout/components/about/about.component';
+import { BooksModule } from './books/books.module';
+import { CartModule } from './cart/cart.module';
+import { LayoutModule } from './layout/layout.module';
+import { OrdersModule } from './orders/orders.module';
 import { APP_CONSTANTS, ConstantsService } from './shared/services/constants.service';
 import { APP_RANDOM_STRING_5, GeneratorFactory, GeneratorService } from './shared/services/generator.service';
 import { LocalStorageService } from './shared/services/local-storage.service';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    BookListComponent,
-    BookItemComponent,
-    CartListComponent,
-    CartItemComponent,
-    AboutComponent,
-  ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule],
+  declarations: [AppComponent],
+  imports: [BrowserModule, LayoutModule, SharedModule, BooksModule, CartModule, OrdersModule, AppRoutingModule],
   providers: [
     {
       provide: LocalStorageService,

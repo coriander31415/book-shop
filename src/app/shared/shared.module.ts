@@ -4,7 +4,7 @@ import { OrdersModule } from '../orders/orders.module';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule],
+  imports: [CommonModule, OrdersModule],
   exports: [CommonModule, OrdersModule],
 })
 export class SharedModule {}

@@ -6,5 +6,6 @@ import { BookListComponent } from './components/book-list/book-list.component';
 @NgModule({
   declarations: [BookListComponent, BookItemComponent],
   imports: [SharedModule],
+  exports: [BookListComponent, BookItemComponent],
 })
 export class BooksModule {}
