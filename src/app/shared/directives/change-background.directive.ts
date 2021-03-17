@@ -17,7 +17,7 @@ export class ChangeBackgroundDirective implements AfterViewInit {
     this.initialColor = this.element.nativeElement.style.backgroundColor;
   }
 
-  @HostListener('mouseover')
+  @HostListener('mouseenter')
   onMouseOver(): void {
     this.elementBackground = this.backgroundColor;
   }
