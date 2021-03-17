@@ -11,6 +11,12 @@ export class BookItemComponent {
 
   @Output() selectBook: EventEmitter<IBook> = new EventEmitter<IBook>();
 
+  bookInfoStyles = {
+    opacity: 0.5,
+    backgroundColor: 'ivory',
+    'margin-bottom': '10px',
+  };
+
   addBookToCart(book: IBook): void {
     this.selectBook.emit(book);
   }

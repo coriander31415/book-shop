@@ -1,7 +1,9 @@
 .cart-item {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
 }
 
 .cart-item-qty {
@@ -10,4 +12,5 @@
 
 input {
   width: 35px;
+  text-align: center;
 }

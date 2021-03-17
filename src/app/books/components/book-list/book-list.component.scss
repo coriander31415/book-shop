@@ -1,0 +1,21 @@
+.books-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.book-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-cart {
+  width: 100px;
+  margin-left: 40px;
+}

@@ -1,12 +1,14 @@
-<div>{{ cartItem.name }}</div>
-<div class="cart-item">
-  <p>Price: {{ cartItem.price | currency: 'USD' }} </p>
-  <div class="cart-item-qty">
-    <button (click)="onDecreaseQty(cartItem.id)">-</button>
-    <input type="text" value="{{ cartItem.qty }}" />
-    <button (click)="onIncreaseQty(cartItem.id)">+</button>
+<div [appBackGroundOnHover]="HOVER_BACKGROUND_COLOR">
+  <div>{{ cartItem.name }}</div>
+  <div class="cart-item">
+    <p>Price: {{ cartItem.price | currency: 'USD' }} </p>
+    <div class="cart-item-qty">
+      <button (click)="onDecreaseQty(cartItem.id)">-</button>
+      <input type="text" value="{{ cartItem.qty }}" />
+      <button (click)="onIncreaseQty(cartItem.id)">+</button>
+    </div>
+    <p>Total cost: {{ cartItem.cost | currency: 'USD' }}</p>
+    <button (click)="onDeleteItem(cartItem.id)">Delete item</button>
   </div>
-  <p>Total cost: {{ cartItem.cost | currency: 'USD' }}</p>
-  <button (click)="onDeleteItem(cartItem.id)">Delete item</button>
 </div>
 
