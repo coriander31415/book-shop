@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { HOVER_BACKGROUND_COLOR } from '../../../shared/constants/colors';
 import { ICartItem } from '../../models/cart.model';
 
 @Component({
@@ -15,6 +16,8 @@ export class CartItemComponent {
   @Output() decreaseQty = new EventEmitter<number>();
 
   @Output() deleteItem = new EventEmitter<number>();
+
+  HOVER_BACKGROUND_COLOR = HOVER_BACKGROUND_COLOR;
 
   onIncreaseQty(id: number): void {
     this.increaseQty.emit(id);
