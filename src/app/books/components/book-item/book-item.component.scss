@@ -3,7 +3,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: flex-end;
-  height: 230px;
+  height: 220px;
   margin: 10px;
   padding: 10px;
 }
@@ -11,7 +11,7 @@
 .book-cover {
   width: 150px;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 ul {
