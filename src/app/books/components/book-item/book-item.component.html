@@ -1,4 +1,4 @@
-<div class="book-item" [ngClass]="{'out-of-stock': !this.book.isAvailable}">
+<div class="book-item" [ngClass]="{'out-of-stock': !this.book.isAvailable}" appHighlightElement>
   <img class="book-cover" src="{{ book.img }}" alt="{{ book.name }}" />
   <ul class="book-info">
     <h2>{{ book.name }}</h2>
