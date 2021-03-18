@@ -5,7 +5,7 @@ export interface IBook {
   price: number;
   category: EBookCategory;
   author: string;
-  createDate: number;
+  createDate: Date;
   isAvailable: boolean;
   img: string;
 }
