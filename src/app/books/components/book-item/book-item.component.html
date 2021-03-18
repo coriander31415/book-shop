@@ -1,10 +1,11 @@
 <div class="book-item" [ngClass]="{'out-of-stock': !this.book.isAvailable}" appHighlightElement>
   <img class="book-cover" src="{{ book.img }}" alt="{{ book.name }}" />
   <ul class="book-info">
-    <h2>{{ book.name }}</h2>
+    <h2>{{ book.name | titlecase }}</h2>
     <li [ngStyle]="bookInfoStyles"> {{ book.description }} </li>
     <li>Author: {{ book.author }} </li>
-    <li>Category: {{ book.category }}</li>
+    <li>Category: {{ book.category | uppercase }}</li>
+    <li>Published: {{ book.createDate | date: 'y'}}</li>
     <li>Price: {{ book.price | currency:'USD' }}</li>
   </ul>
 </div>

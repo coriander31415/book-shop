@@ -1,5 +1,5 @@
 <div [appBackGroundOnHover]="HOVER_BACKGROUND_COLOR">
-  <div>{{ cartItem.name }}</div>
+  <div>{{ cartItem.name | titlecase}}</div>
   <div class="cart-item">
     <p>Price: {{ cartItem.price | currency: 'USD' }} </p>
     <div class="cart-item-qty">

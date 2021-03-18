@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CartService } from '../../../cart/services/cart.service';
 import { IBook } from '../../models/book.model';
 import { BookService } from '../../services/book.service';
@@ -10,12 +11,12 @@ import { BookService } from '../../services/book.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookListComponent implements OnInit {
-  books: IBook[] = [];
+  books$!: Observable<IBook[]>;
 
   constructor(private cartService: CartService, private bookService: BookService) {}
 
   ngOnInit(): void {
-    this.books = this.bookService.getBooks();
+    this.books$ = this.bookService.getBooks();
   }
 
   selectBook(book: IBook): void {

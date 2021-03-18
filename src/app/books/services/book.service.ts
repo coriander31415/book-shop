@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { booksCatalogue } from '../../shared/constants/books-catalogue';
 import { IBook } from '../models/book.model';
 
@@ -6,10 +7,9 @@ import { IBook } from '../models/book.model';
   providedIn: 'root',
 })
 export class BookService {
-  books: IBook[] = [];
+  private books$ = of(booksCatalogue);
 
-  getBooks(): IBook[] {
-    this.books = booksCatalogue;
-    return this.books;
+  getBooks(): Observable<IBook[]> {
+    return this.books$;
   }
 }
