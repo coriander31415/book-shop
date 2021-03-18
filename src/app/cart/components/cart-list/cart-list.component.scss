@@ -1,0 +1,16 @@
+.sorting {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+#sort {
+  width: fit-content;
+  height: 22px;
+  margin-left: 8px;
+}
+
+.sort-order {
+  margin-left: 8px;
+}

@@ -1,19 +1,28 @@
 <ng-container *ngIf="cart.cartItems.length; else cartIsEmpty">
   <h1>Your cart</h1>
   <h5>Total qty of Cart: {{ cart.totalQty }} pcs.</h5>
-  <h5>Total cost of Cart: {{ cart.totalCost | currency:'USD' }}</h5>
-  <hr>
-   <app-cart-item 
-    *ngFor="let cartItem of cart.cartItems; trackBy: trackByCartItemId"
-    [cartItem] = cartItem
+  <h5>Total cost of Cart: {{ cart.totalCost | currency: "USD" }}</h5>
+  <hr />
+  <div class="sorting">
+    <p>Sort:</p>
+    <select name="sort" id="sort" [(ngModel)]="sortBy">
+      <option [value]="option.value" *ngFor="let option of sortOptions">{{ option.sortName }}</option>
+    </select>
+    <input type="checkbox" [(ngModel)]="isDescSort" checked />
+    <label>Descending</label>
+  </div>
+  <hr />
+  <app-cart-item
+    *ngFor="let cartItem of cart.cartItems | orderBy: sortBy:isDescSort; trackBy: trackByCartItemId"
+    [cartItem]="cartItem"
     (increaseQty)="onIncreaseQty($event)"
     (decreaseQty)="onDecreaseQty($event)"
     (deleteItem)="onDeleteItem($event)"
-    >
-    </app-cart-item>
-  <hr>
+  >
+  </app-cart-item>
+  <hr />
   <button (click)="onDeleteAllItems()">Clear Cart</button>
 </ng-container>
 <ng-template #cartIsEmpty>
-<p>Your cart is empty...</p>
+  <p>Your cart is empty...</p>
 </ng-template>
